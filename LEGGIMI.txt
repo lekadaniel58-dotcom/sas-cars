@@ -1,0 +1,12 @@
+SASÀ CARS – sito statico (HTML + CSS + JavaScript, nessuna installazione)
+
+COME USARLO
+- Apri index.html con il browser per vederlo subito.
+- Per pubblicarlo, carica l'intera cartella su qualsiasi hosting (Netlify, Vercel, il tuo provider).
+
+COSA PERSONALIZZARE
+1. Nome, indirizzo, telefono, email, P. IVA: in index.html.
+2. Le auto: in js/main.js, array CARS (nome, anno, km, alimentazione, prezzo di vendita "sale", prezzo al giorno "day"; null = non disponibile in quella modalità).
+3. Foto reali: al posto della funzione carSVG puoi mettere <img src="img/nomefile.jpg"> nella card.
+4. Colori e font: variabili all'inizio di css/style.css.
+5. Invio form: in js/main.js cerca "QUI: collega un servizio". Ora il modulo è solo dimostrativo.

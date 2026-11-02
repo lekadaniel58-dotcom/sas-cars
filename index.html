@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sasà Cars – Vendita e noleggio auto</title>
+<meta name="description" content="Auto usate garantite e noleggio flessibile. Scegli, calcola il prezzo e prenota online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top"><img src="img/logo-sasa-cars.jpeg" alt="Sasà Cars – Vendita auto" width="2048" height="682"></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav">
+      <a href="#foto">Le nostre foto</a>
+      <a href="#parco">Parco auto</a>
+      <a href="#noleggio">Calcola noleggio</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1>Compra la tua prossima auto, oppure prendila solo per i giorni che ti servono.</h1>
+        <p class="lead">Usato garantito e noleggio flessibile, con il prezzo chiaro prima di entrare in sede.</p>
+        <div class="mode" role="group" aria-label="Cosa cerchi">
+          <button type="button" data-mode="buy" aria-pressed="true">Compra</button>
+          <button type="button" data-mode="rent" aria-pressed="false">Noleggia</button>
+        </div>
+        <p class="count" id="count" aria-live="polite"></p>
+        <a class="btn signal" href="#foto">Scopri le nostre auto</a>
+      </div>
+      <div class="scene brand-scene">
+        <img class="brand-promo" src="img/sasa-cars-promo.jpeg" alt="Sasà Cars – immagine promozionale con auto sportiva" width="1672" height="941" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="foto" aria-labelledby="photoTitle">
+    <p class="eyebrow">Sasà Cars · Vendita auto</p>
+    <h2 id="photoTitle">Le nostre auto, da vicino.</h2>
+    <p class="gallery-intro">Esterni, interni e dettagli: guarda tutte le foto e tocca un’immagine per ingrandirla.</p>
+    <div class="photo-grid"><button type="button" class="photo-card" data-photo="0" aria-label="Ingrandisci foto 1: Tetto panoramico visto dall’interno"><img src="img/auto-01.jpeg" alt="Tetto panoramico visto dall’interno" width="1200" height="1600" loading="lazy"><span>Foto 01 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="1" aria-label="Ingrandisci foto 2: Sedili anteriori e abitacolo"><img src="img/auto-02.jpeg" alt="Sedili anteriori e abitacolo" width="1200" height="1600" loading="lazy"><span>Foto 02 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="2" aria-label="Ingrandisci foto 3: Auto grigia, vista anteriore"><img src="img/auto-03.jpeg" alt="Auto grigia, vista anteriore" width="1200" height="1600" loading="lazy"><span>Foto 03 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="3" aria-label="Ingrandisci foto 4: Volante e quadro strumenti illuminato"><img src="img/auto-04.jpeg" alt="Volante e quadro strumenti illuminato" width="1200" height="1600" loading="lazy"><span>Foto 04 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="4" aria-label="Ingrandisci foto 5: Auto grigia, vista anteriore laterale"><img src="img/auto-05.jpeg" alt="Auto grigia, vista anteriore laterale" width="1200" height="1600" loading="lazy"><span>Foto 05 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="5" aria-label="Ingrandisci foto 6: Auto grigia, vista laterale"><img src="img/auto-06.jpeg" alt="Auto grigia, vista laterale" width="1200" height="1600" loading="lazy"><span>Foto 06 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="6" aria-label="Ingrandisci foto 7: Dettaglio del tetto panoramico"><img src="img/auto-07.jpeg" alt="Dettaglio del tetto panoramico" width="1600" height="1200" loading="lazy"><span>Foto 07 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="7" aria-label="Ingrandisci foto 8: Auto grigia, vista posteriore laterale"><img src="img/auto-08.jpeg" alt="Auto grigia, vista posteriore laterale" width="1200" height="1600" loading="lazy"><span>Foto 08 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="8" aria-label="Ingrandisci foto 9: Abitacolo e volante"><img src="img/auto-09.jpeg" alt="Abitacolo e volante" width="1200" height="1600" loading="lazy"><span>Foto 09 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="9" aria-label="Ingrandisci foto 10: Auto scura, vista posteriore laterale"><img src="img/auto-10.jpeg" alt="Auto scura, vista posteriore laterale" width="1200" height="1600" loading="lazy"><span>Foto 10 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="10" aria-label="Ingrandisci foto 11: Auto grigia, vista posteriore"><img src="img/auto-11.jpeg" alt="Auto grigia, vista posteriore" width="1200" height="1600" loading="lazy"><span>Foto 11 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="11" aria-label="Ingrandisci foto 12: Plancia e quadro strumenti"><img src="img/auto-12.jpeg" alt="Plancia e quadro strumenti" width="1200" height="1600" loading="lazy"><span>Foto 12 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="12" aria-label="Ingrandisci foto 13: Auto scura, vista posteriore"><img src="img/auto-13.jpeg" alt="Auto scura, vista posteriore" width="1200" height="1600" loading="lazy"><span>Foto 13 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="13" aria-label="Ingrandisci foto 14: Sedili e abitacolo"><img src="img/auto-14.jpeg" alt="Sedili e abitacolo" width="1200" height="1600" loading="lazy"><span>Foto 14 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="14" aria-label="Ingrandisci foto 15: Auto scura, vista anteriore"><img src="img/auto-15.jpeg" alt="Auto scura, vista anteriore" width="1200" height="1600" loading="lazy"><span>Foto 15 <span aria-hidden="true">↗</span></span></button>
+<button type="button" class="photo-card" data-photo="15" aria-label="Ingrandisci foto 16: Auto scura, vista anteriore laterale"><img src="img/auto-16.jpeg" alt="Auto scura, vista anteriore laterale" width="1200" height="1600" loading="lazy"><span>Foto 16 <span aria-hidden="true">↗</span></span></button></div>
+  </section>
+
+  <section class="wrap sec" id="parco" aria-labelledby="fleetTitle">
+    <h2 id="fleetTitle">Auto in vendita</h2>
+    <p class="catalog-note">Catalogo dimostrativo: modelli e prezzi di esempio, non associati alle foto della galleria.</p>
+    <div class="tools">
+      <div class="chips" id="chips" role="group" aria-label="Categoria"></div>
+      <label class="range">Budget massimo: <output id="maxOut"></output>
+        <input type="range" id="max" aria-label="Budget massimo">
+      </label>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Nessuna auto con questi filtri. Alza il budget o scegli un’altra categoria.</p>
+  </section>
+
+  <section class="dark-sec sec" id="noleggio" aria-labelledby="calcTitle">
+    <div class="wrap calc">
+      <div>
+        <h2 id="calcTitle">Calcola il tuo noleggio</h2>
+        <p class="lead">Scegli auto e date: il totale si aggiorna subito. Da 7 giorni in su hai il 10% di sconto.</p>
+        <label>Auto
+          <select id="cCar"></select>
+        </label>
+        <div class="two">
+          <label>Ritiro <input type="date" id="cStart"></label>
+          <label>Riconsegna <input type="date" id="cEnd"></label>
+        </div>
+        <p id="dateError" role="status" hidden>Scegli una data di ritiro da oggi in poi e una riconsegna successiva al ritiro.</p>
+        <fieldset>
+          <legend>Extra</legend>
+          <label class="check"><input type="checkbox" data-x="4" data-n="Seggiolino"> Seggiolino bimbi (4 € al giorno)</label>
+          <label class="check"><input type="checkbox" data-x="6" data-n="Secondo guidatore"> Secondo guidatore (6 € al giorno)</label>
+          <label class="check"><input type="checkbox" data-x="12" data-n="Kasko"> Copertura kasko (12 € al giorno)</label>
+        </fieldset>
+      </div>
+      <div class="receipt" aria-live="polite">
+        <h3 id="rName"></h3>
+        <dl id="rRows"></dl>
+        <p class="total"><span>Totale</span><strong id="rTotal"></strong></p>
+        <button class="btn dark" id="rBook" type="button">Prenota questo noleggio</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="servizi" aria-labelledby="svcTitle">
+    <h2 id="svcTitle">Cosa trovi in più</h2>
+    <div class="svc">
+      <div><h3>Garanzia 12 mesi</h3><p>Ogni auto usata è controllata in officina e coperta per un anno.</p></div>
+      <div><h3>Permuta in giornata</h3><p>Porta la tua auto: la valutiamo mentre scegli la nuova.</p></div>
+      <div><h3>Finanziamento su misura</h3><p>Scegli anticipo e rata. Ti mostriamo il costo totale prima di firmare.</p></div>
+      <div><h3>Assistenza sul noleggio</h3><p>Soccorso stradale attivo ogni giorno, a qualsiasi ora.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap sec contact" id="contatti" aria-labelledby="ctTitle">
+    <div>
+      <h2 id="ctTitle">Passa a trovarci</h2>
+      <p>Via Esempio 1, 00000 Città<br>Lunedì–sabato, 9:00–13:00 e 15:30–19:30</p>
+      <p><a href="tel:+390000000000">+39 000 000 0000</a><br><a href="mailto:info@esempio.it">info@esempio.it</a></p>
+    </div>
+    <div><button class="btn dark" type="button" id="openContact">Scrivici un messaggio</button></div>
+  </section>
+</main>
+
+<footer><div class="wrap"><img class="footer-logo" src="img/logo-sasa-cars.jpeg" alt="Sasà Cars" width="2048" height="682">© <span id="yr"></span> Sasà Cars. P. IVA 00000000000.</div></footer>
+
+<dialog id="dlg">
+  <form id="lead">
+    <h3 id="dlgTitle">Richiedi informazioni</h3>
+    <p id="dlgSub"></p>
+    <label>Nome <input required name="nome" autocomplete="name"></label>
+    <label>Telefono <input required type="tel" name="tel" autocomplete="tel"></label>
+    <label>Messaggio (facoltativo) <textarea name="msg" rows="3"></textarea></label>
+    <div class="row">
+      <button type="button" class="btn ghost" id="dlgClose">Annulla</button>
+      <button class="btn dark">Prova il modulo</button>
+    </div>
+    <p class="form-note">Modulo dimostrativo: le richieste non vengono inviate. Il servizio di contatto deve ancora essere configurato.</p>
+    <p id="dlgDone" role="status" hidden>Dimostrazione completata. Nessun dato è stato inviato.</p>
+  </form>
+</dialog>
+<dialog id="photoDialog" aria-label="Galleria fotografica">
+  <div class="photo-toolbar"><span id="photoCounter" aria-live="polite"></span><button type="button" id="closePhoto" aria-label="Chiudi foto">Chiudi ×</button></div>
+  <img id="fullPhoto" alt="">
+  <div class="photo-controls"><button type="button" id="prevPhoto" aria-label="Foto precedente">← Precedente</button><button type="button" id="nextPhoto" aria-label="Foto successiva">Successiva →</button></div>
+</dialog>
+<script src="js/main.js"></script>
+</body>
+</html>

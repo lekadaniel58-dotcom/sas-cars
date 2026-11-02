@@ -1,0 +1,139 @@
+:root{--ink:#0F1F33;--ink2:#1B3350;--paper:#F2F5F8;--line:#D5DDE6;--muted:#5B6B7D;--signal:#FFD23F;--blue:#2E5BFF;--r:14px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font:400 1.05rem/1.6 Figtree,system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+h1,h2,h3,.price,.total strong{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+.sec{padding:4.5rem 0}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+.top{position:sticky;top:0;z-index:20;background:rgba(15,31,51,.96);backdrop-filter:blur(8px);color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:.6rem;color:#fff;text-decoration:none;font:800 1.2rem 'Bricolage Grotesque',sans-serif}
+.plate{background:#fff;color:var(--ink);border:2px solid var(--signal);border-radius:6px;padding:0 .45rem;font-size:.95rem}
+nav a{color:#cfd9e5;text-decoration:none;margin-left:1.7rem;font-weight:500}
+nav a:hover{color:#fff}
+.menu-btn{display:none;background:none;border:1.5px solid #3a5679;color:#fff;border-radius:999px;padding:.4rem 1rem;font:inherit}
+
+.hero{background:var(--ink);color:#fff;padding-top:4.5rem;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:2rem;align-items:end}
+.hero-text{padding-bottom:4rem}
+h1{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:800;max-width:19ch}
+.lead{color:#b9c7d8;margin:1.2rem 0 1.8rem;max-width:46ch}
+.mode{display:inline-flex;background:var(--ink2);border-radius:999px;padding:4px}
+.mode button{border:0;background:none;color:#cfd9e5;padding:.7rem 1.7rem;border-radius:999px;font:600 1rem Figtree,sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.mode button[aria-pressed=true]{background:var(--signal);color:var(--ink)}
+.count{color:#b9c7d8;margin:1rem 0 1.4rem;font-size:.95rem}
+.scene{position:relative;height:300px}
+.hero-car{position:absolute;left:0;right:0;bottom:16px;animation:drive 1.5s cubic-bezier(.2,.8,.2,1) both}
+.hero-car svg{width:100%;height:auto;display:block}
+@keyframes drive{from{transform:translateX(-115%)}to{transform:none}}
+.road{position:absolute;left:-10%;right:-10%;bottom:0;height:22px;background:linear-gradient(90deg,var(--signal) 0 38px,transparent 38px 76px) 0 55%/76px 3px repeat-x,#0A1624}
+
+.btn{display:inline-block;border:0;border-radius:999px;padding:.85rem 1.6rem;font:600 1rem Figtree,sans-serif;cursor:pointer;text-decoration:none}
+.signal{background:var(--signal);color:var(--ink)}
+.dark{background:var(--ink);color:#fff}
+.ghost{background:none;border:1.5px solid var(--line);color:var(--ink)}
+.sm{padding:.6rem 1.05rem;font-size:.92rem}
+
+.tools{display:flex;gap:1.4rem;flex-wrap:wrap;align-items:center;margin-top:1.4rem}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap}
+.chips button{border:1.5px solid var(--line);background:#fff;padding:.45rem 1.05rem;border-radius:999px;font:500 .95rem Figtree,sans-serif;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.range{display:flex;align-items:center;gap:.7rem;font-weight:500}
+.range output{font-weight:800;min-width:5ch}
+.range input{accent-color:var(--blue);width:180px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;margin-top:2rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s}
+.card:hover{border-color:var(--ink)}
+.pic{background:color-mix(in srgb,var(--tint) 14%,#fff);padding:1.3rem 1rem .5rem}
+.pic svg{width:100%;height:auto;display:block}
+.body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
+.body h3{font-size:1.3rem}
+.spec{display:flex;gap:.9rem;flex-wrap:wrap;color:var(--muted);font-size:.92rem}
+.foot{margin-top:auto;padding-top:.8rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.price{font-size:1.5rem;font-weight:800}
+.price small{font:500 .85rem Figtree,sans-serif;color:var(--muted)}
+.empty{margin-top:2rem;color:var(--muted)}
+
+.dark-sec{background:var(--ink);color:#fff}
+.calc{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:start}
+.calc .lead{margin-bottom:1.2rem}
+.calc label{display:block;font-weight:600;margin-top:1rem}
+.calc select,.calc input[type=date]{width:100%;margin-top:.35rem;padding:.75rem;border-radius:10px;border:1.5px solid #34506f;background:var(--ink2);color:#fff;font:inherit;color-scheme:dark}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+fieldset{border:0;margin-top:1.2rem}
+legend{font-weight:600}
+.calc .check{font-weight:400;display:flex;gap:.6rem;align-items:center;margin-top:.5rem}
+.check input{width:1.1rem;height:1.1rem;accent-color:var(--signal)}
+.receipt{background:#fff;color:var(--ink);border-radius:var(--r);padding:1.7rem}
+.receipt h3{font-size:1.5rem;margin-bottom:1rem}
+.receipt dl>div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--line)}
+.receipt dt{color:var(--muted)}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin:1.2rem 0}
+.total strong{font-size:2.3rem}
+
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;margin-top:2rem}
+.svc>div{border-top:2px solid var(--ink);padding:1.2rem 0 2rem}
+.svc h3{font-size:1.4rem;margin-bottom:.4rem}
+.svc p{color:var(--muted);max-width:44ch}
+.contact{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;padding-top:1rem}
+.contact p{margin-top:1rem}
+footer{background:var(--ink);color:#9fb0c4;padding:1.6rem 0;font-size:.9rem}
+
+dialog{border:0;border-radius:var(--r);padding:1.7rem;width:min(440px,92vw)}
+dialog::backdrop{background:rgba(15,31,51,.65)}
+dialog h3{font-size:1.5rem}
+dialog p{color:var(--muted)}
+dialog label{display:block;margin-top:1rem;font-weight:600}
+dialog input,dialog textarea{width:100%;margin-top:.3rem;padding:.7rem;border:1.5px solid var(--line);border-radius:10px;font:inherit}
+.row{display:flex;gap:.8rem;justify-content:flex-end;margin-top:1.4rem}
+#dlgDone{margin-top:1rem;color:#14703f;font-weight:600}
+
+@media(max-width:820px){
+  .hero-grid,.calc,.svc{grid-template-columns:1fr}
+  .hero-text{padding-bottom:1rem}
+  .scene{height:230px}
+  .menu-btn{display:block}
+  nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--ink);padding:1rem 4% 1.4rem;flex-direction:column}
+  nav.open{display:flex}
+  nav a{margin:.6rem 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Accessibilità e adattamento degli elementi interattivi. */
+dialog{margin:auto;max-height:90dvh;overflow-y:auto}
+button:disabled{opacity:.5;cursor:not-allowed}
+.form-note{font-size:.85rem;margin-top:1rem}
+#dateError{color:#ffd23f;margin-top:.75rem}
+@media(max-width:480px){
+  .range{flex-wrap:wrap;width:100%}
+  .range input{width:100%}
+  .two{grid-template-columns:1fr}
+  .row{flex-wrap:wrap}
+  .foot{flex-wrap:wrap}
+  .receipt{padding:1.2rem}
+}
+
+/* Identità Sasà Cars e fotografie originali. */
+.logo img{display:block;width:174px;height:58px;object-fit:contain}
+.hero-grid{align-items:center}
+.brand-scene{height:auto;margin-bottom:3rem}
+.brand-promo{display:block;width:100%;height:auto;border-radius:var(--r);border:1px solid #344253;box-shadow:0 20px 60px #0005}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:.7rem}
+.gallery-intro,.catalog-note{color:var(--muted);margin-top:1rem;max-width:65ch}
+.catalog-note{font-size:.9rem}
+.photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.photo-card{padding:0;border:1px solid var(--line);border-radius:var(--r);background:#fff;overflow:hidden;text-align:left;cursor:pointer;color:var(--ink);font:inherit}
+.photo-card img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;transition:filter .2s}
+.photo-card:hover img{filter:brightness(1.12)}
+.photo-card>span{display:flex;justify-content:space-between;padding:.65rem 1rem;font-size:.85rem;font-weight:600}
+.footer-logo{display:block;width:180px;height:60px;object-fit:contain;margin-bottom:1rem}
+#photoDialog{width:min(1000px,96vw);max-width:96vw;max-height:96dvh;padding:1rem;background:#0a111b;color:white;overflow:auto}
+#fullPhoto{display:block;width:100%;height:calc(90dvh - 120px);object-fit:contain;margin:.75rem 0}
+.photo-toolbar,.photo-controls{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.photo-toolbar button,.photo-controls button{background:#1b3350;color:#fff;border:1px solid #52657b;border-radius:999px;padding:.5rem 1rem;cursor:pointer;font:inherit}
+@media(max-width:820px){.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.brand-scene{height:auto;margin:1rem 0 2rem}.logo img{width:150px;height:50px}}
+@media(max-width:480px){.photo-grid{gap:.7rem}.photo-card>span{padding:.5rem .7rem}.photo-controls button{font-size:.85rem}}
