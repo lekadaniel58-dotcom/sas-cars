@@ -1,23 +1,20 @@
 # Sasà Cars
 
-Sito statico in italiano per vendita e noleggio auto, basato sui file forniti nello ZIP.
+Sito statico per la vendita auto, con identità Sasà Cars, due auto in evidenza, 16 fotografie originali, filtri esterni/interni, galleria ingrandibile e richieste di informazioni.
 
-## Avvio locale
-
-Dalla cartella del repository:
+## Avvio
 
 ```sh
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Aprire il sito nel browser sulla porta 8000. Non richiede dipendenze npm o compilazione.
+Non servono dipendenze npm o compilazione. Per GitHub Pages usare il ramo `gh-pages`, cartella `/ (root)`.
 
-## Contenuti da personalizzare
+## Personalizzazione
 
-- `js/main.js`: catalogo dimostrativo, prezzi e illustrazioni SVG.
-- `index.html`: indirizzo, telefono, email e partita IVA sono segnaposto.
-- `css/style.css`: colori, tipografia e impaginazione responsive.
-- Il modulo contatti è una demo e non invia né salva i dati: collegare un servizio di invio prima di pubblicare per clienti reali.
-- Il calcolatore applica uno sconto del 10% per noleggi di almeno 7 giorni, inclusi gli extra.
+- `index.html`: testi e schede auto. Prezzi e disponibilità sono su richiesta; confermare modelli e dati commerciali con il titolare.
+- `js/main.js`: configurazione `CONTACT` per WhatsApp (numero internazionale, solo cifre), email e indirizzo confermati. Se non sono compilati, la richiesta si scarica come file di testo e non viene inviata. Con WhatsApp/email configurati si apre il servizio per confermare l’invio. Nessun dato viene conservato dal sito.
+- `img/`: tutte le 16 foto, logo e immagine promozionale originali.
+- `css/style.css`: layout responsive con supporto alle preferenze di movimento ridotto.
 
-Per pubblicare, caricare `index.html`, `css/` e `js/` su un hosting statico. I font Google sono opzionali: in assenza di rete vengono usati i font di sistema.
+Prima dell’uso commerciale completare recapiti e dati aziendali effettivi. Non sono presenti prezzi, garanzie, recensioni o informazioni societarie inventati.
