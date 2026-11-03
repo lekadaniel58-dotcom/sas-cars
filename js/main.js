@@ -37,3 +37,44 @@ $('#requestForm').addEventListener('submit',event=>{
  const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='richiesta-sasa-cars.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
  $('#requestResult').textContent='Richiesta salvata nel file. Nessun messaggio è stato inviato.';$('#requestResult').hidden=false;
 });
+
+/* Intro con prospettiva CSS: nessuna dipendenza esterna, uscita garantita e saltabile. */
+(()=>{
+ const intro=document.getElementById('driveIntro');
+ const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+ if(!intro||motion.matches)return;
+ const skip=document.getElementById('skipIntro');
+ const image=document.getElementById('introCarImage');
+ let ended=false,driveTimer,exitTimer,loadTimer;
+ const previousFocus=document.activeElement;
+ const background=[...document.body.children].filter(node=>node!==intro&&node.tagName!=='SCRIPT');
+ const inertState=background.map(node=>[node,node.inert]);
+ const finish=()=>{
+  if(ended)return;ended=true;
+  clearTimeout(driveTimer);clearTimeout(exitTimer);clearTimeout(loadTimer);
+  intro.hidden=true;intro.classList.remove('running','leaving');
+  document.documentElement.classList.remove('intro-active');
+  inertState.forEach(([node,inert])=>node.inert=inert);
+  if(intro.contains(document.activeElement)){
+   if(previousFocus&&previousFocus!==document.body)previousFocus.focus({preventScroll:true});
+   else{const heading=document.getElementById('heroTitle');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});heading.addEventListener('blur',()=>heading.removeAttribute('tabindex'),{once:true});}
+  }
+  motion.removeEventListener('change',finish);
+ };
+ const leave=()=>{if(ended)return;intro.classList.add('leaving');exitTimer=setTimeout(finish,460);};
+ intro.hidden=false;document.documentElement.classList.add('intro-active');
+ background.forEach(node=>node.inert=true);
+ skip.focus({preventScroll:true});
+ skip.addEventListener('click',finish,{once:true});
+ intro.addEventListener('keydown',event=>{if(event.key==='Escape')finish();});
+ motion.addEventListener('change',finish);
+ window.addEventListener('pagehide',finish,{once:true});
+ // Un’immagine non caricata non deve mai impedire di accedere al sito.
+ loadTimer=setTimeout(finish,6000);
+ const ready=image.decode?image.decode():Promise.resolve();
+ ready.then(()=>{
+  if(ended)return;
+  intro.classList.add('running');
+  driveTimer=setTimeout(leave,3500);
+ }).catch(finish);
+})();

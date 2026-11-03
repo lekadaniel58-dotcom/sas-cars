@@ -6,3 +6,45 @@
 /* Panamera protagonista nell’apertura. */
 .hero-image{object-position:60% center}
 @media(max-width:700px){.hero-image{object-position:60% center}}
+
+/* Ingresso cinematografico: la foto della Panamera attraversa un palco in prospettiva 3D. */
+html.intro-active{overflow:hidden}
+.drive-intro{position:fixed;inset:0;z-index:1000;background:#050608;color:#fff;overflow:hidden;isolation:isolate;opacity:1;transition:opacity .45s ease,visibility .45s}
+.drive-intro[hidden]{display:none}
+.drive-intro.leaving{opacity:0;visibility:hidden;pointer-events:none}
+.intro-ambient{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 65%,#4d151f55,transparent 60%)}
+.intro-logo{position:absolute;top:35px;left:40px;width:180px;height:auto;z-index:3}
+.intro-skip{position:absolute;right:40px;top:43px;padding:9px 16px;border:1px solid #ffffff55;border-radius:3px;background:#090a0bcc;color:#fff;font-size:12px;z-index:3}
+.intro-skip span{margin-left:15px}
+.intro-stage{position:absolute;inset:0;perspective:850px;perspective-origin:50% 52%;transform-style:preserve-3d}
+.intro-floor{position:absolute;left:-100%;width:300%;height:160%;top:52%;transform-origin:center top;transform:rotateX(78deg);background:repeating-linear-gradient(90deg,transparent 0 119px,#ffffff0d 120px 121px),repeating-linear-gradient(0deg,transparent 0 89px,#ffffff0c 90px 91px);mask-image:linear-gradient(transparent,#000 30%,transparent 90%)}
+.intro-horizon{position:absolute;top:57%;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,#f33040,transparent);box-shadow:0 0 35px #d9212b}
+.intro-car{position:absolute;width:min(1050px,120vw);left:50%;top:49%;transform-style:preserve-3d;transform:translate(-50%,-50%) translate3d(-35vw,5vh,-1900px) rotateY(-22deg);opacity:0;will-change:transform,opacity;filter:drop-shadow(0 30px 20px #0009)}
+.intro-car img{width:100%;height:auto;clip-path:polygon(12% 66%,12.5% 57%,13% 54%,16% 50%,19% 43%,26% 38%,36% 35%,47% 35%,58% 37%,64% 43%,68% 49%,68% 51%,77% 53%,83% 55%,86% 58%,88% 63%,90% 71%,90% 84%,87% 87%,77% 90%,60% 94%,48% 95%,40% 94%,36% 86%,22% 81%,17% 84%,14% 79%,12% 74%)}
+.intro-streak{position:absolute;top:59%;height:2px;width:48vw;background:linear-gradient(90deg,transparent,#ff3447,transparent);opacity:0;box-shadow:0 0 20px #f03;transform:translateX(-100vw)}
+.streak-two{top:64%;height:1px;width:65vw}
+.intro-copy{position:absolute;bottom:10%;left:0;right:0;text-align:center;pointer-events:none}
+.intro-copy>span{display:block;font-size:9px;letter-spacing:.35em;color:#b2b2b8;margin-bottom:13px}
+.intro-copy>strong{font:500 clamp(24px,3vw,40px)/1.2 var(--font);letter-spacing:-.04em}
+.intro-progress{position:absolute;left:0;right:0;bottom:0;height:2px;background:#ffffff12}
+.intro-progress>span{display:block;width:100%;height:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
+.drive-intro.running .intro-car{animation:panamera-drive 3.6s cubic-bezier(.2,.65,.35,1) both}
+.drive-intro.running .intro-copy{animation:intro-title 3.6s ease both}
+.drive-intro.running .intro-streak{animation:intro-speed 3.6s ease-in both}
+.drive-intro.running .streak-two{animation-delay:.12s}
+.drive-intro.running .intro-progress>span{animation:intro-loading 3.6s linear forwards}
+@keyframes panamera-drive{
+  0%{opacity:0;transform:translate(-50%,-50%) translate3d(-35vw,5vh,-1900px) rotateY(-22deg)}
+  12%{opacity:1}
+  43%{opacity:1;transform:translate(-50%,-50%) translate3d(-3vw,0,-240px) rotateY(-7deg)}
+  67%{opacity:1;transform:translate(-50%,-50%) translate3d(0,-2vh,0) rotateY(0)}
+  82%{opacity:1;transform:translate(-50%,-50%) translate3d(6vw,-3vh,160px) rotateY(8deg)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate3d(42vw,-12vh,780px) rotateY(15deg)}
+}
+@keyframes intro-title{0%,12%{opacity:0;transform:translateY(14px)}25%,68%{opacity:1;transform:translateY(0)}95%,100%{opacity:0;transform:translateY(-10px)}}
+@keyframes intro-speed{0%,35%{opacity:0;transform:translateX(-100vw)}65%{opacity:.7}100%{opacity:0;transform:translateX(150vw)}}
+@keyframes intro-loading{to{transform:scaleX(1)}}
+@media(max-width:700px){.intro-logo{width:140px;left:20px;top:25px}.intro-skip{right:20px;top:30px;font-size:10px;padding:7px 11px}.intro-car{width:160vw}.intro-copy{bottom:15%}.intro-copy>span{font-size:7px;letter-spacing:.25em}.intro-stage{perspective:650px}}
+@media(prefers-reduced-motion:reduce){.drive-intro{display:none!important}html.intro-active{overflow:auto}}
+.intro-floor{top:72%}.intro-horizon{top:72%}
+@media(max-width:700px){.intro-car{width:125vw}}
