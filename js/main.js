@@ -45,12 +45,12 @@ $('#requestForm').addEventListener('submit',event=>{
  if(!intro||motion.matches)return;
  const skip=document.getElementById('skipIntro');
  const image=document.getElementById('introCarImage');
- let ended=false,driveTimer,exitTimer,loadTimer;
+ let ended=false,driveTimer,exitTimer,loadTimer,stopRoad=()=>{};
  const previousFocus=document.activeElement;
  const background=[...document.body.children].filter(node=>node!==intro&&node.tagName!=='SCRIPT');
  const inertState=background.map(node=>[node,node.inert]);
  const finish=()=>{
-  if(ended)return;ended=true;
+  if(ended)return;ended=true;stopRoad();
   clearTimeout(driveTimer);clearTimeout(exitTimer);clearTimeout(loadTimer);
   intro.hidden=true;intro.classList.remove('running','leaving');
   document.documentElement.classList.remove('intro-active');
@@ -75,6 +75,59 @@ $('#requestForm').addEventListener('submit',event=>{
  ready.then(()=>{
   if(ended)return;
   intro.classList.add('running');
+  stopRoad=startDrivingRoad(document.getElementById('introRoad'));
   driveTimer=setTimeout(leave,4250);
  }).catch(finish);
 })();
+
+// Ripresa frontale in inseguimento: asfalto e margini arretrano lungo lo stesso
+// asse prospettico della vettura; il paesaggio lontano si muove più lentamente.
+function startDrivingRoad(canvas){
+ if(!canvas)return ()=>{};
+ const ctx=canvas.getContext('2d',{alpha:false});
+ if(!ctx)return ()=>{};
+ let frame=0,stopped=false,width=0,height=0;
+ const texture=document.createElement('canvas');texture.width=texture.height=128;
+ const tx=texture.getContext('2d');const pixels=tx.createImageData(128,128);
+ let seed=48271;const random=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+ for(let i=0;i<pixels.data.length;i+=4){const v=38+Math.floor(random()*28);pixels.data[i]=v;pixels.data[i+1]=v+1;pixels.data[i+2]=v+3;pixels.data[i+3]=255;}tx.putImageData(pixels,0,0);
+ const pattern=ctx.createPattern(texture,'repeat');
+ const trees=Array.from({length:50},()=>({x:random()*1.7-.35,h:18+random()*65,w:12+random()*24}));
+ const start=performance.now();
+ function polygon(points,fill){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.fillStyle=fill;ctx.fill();}
+ function draw(now){
+  if(stopped)return;
+  const w=canvas.clientWidth,h=canvas.clientHeight,dpr=Math.min(window.devicePixelRatio||1,1.5);
+  if(w!==width||h!==height){width=w;height=h;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
+  const elapsed=(now-start)/1000;
+  const horizon=h*.40,vx=-w*.35,center=w*1.0,roadWidth=w*(w<700?5:3.4);
+  const project=(lateral,depth)=>{const t=1/(1+depth*.095);return [vx+(center-vx+lateral*roadWidth)*t,horizon+(h-horizon)*t];};
+  const sky=ctx.createLinearGradient(0,0,0,horizon);sky.addColorStop(0,'#253341');sky.addColorStop(.75,'#71808b');sky.addColorStop(1,'#b0b0a2');ctx.fillStyle=sky;ctx.fillRect(0,0,w,h);
+  // Colline, foschia e alberi: strati con profondità diversa.
+  polygon([[0,horizon],[0,horizon-35],[w*.1,horizon-65],[w*.28,horizon-32],[w*.42,horizon-52],[w*.65,horizon-22],[w*.8,horizon-55],[w,horizon-35],[w,horizon]],'#616e69');
+  const grass=ctx.createLinearGradient(0,horizon,0,h);grass.addColorStop(0,'#4b5340');grass.addColorStop(1,'#272d22');ctx.fillStyle=grass;ctx.fillRect(0,horizon,w,h-horizon);
+  for(const tree of trees){let x=((tree.x*w-elapsed*9)%(w*1.7)+w*1.7)%(w*1.7)-w*.35;polygon([[x-tree.w,horizon+5],[x-tree.w*.4,horizon-tree.h*.7],[x,horizon-tree.h],[x+tree.w*.6,horizon-tree.h*.5],[x+tree.w,horizon+5]],'#303e35');}
+  const a=project(-.5,0),b=project(.5,0);
+  polygon([[vx,horizon],a,b],'#626362');
+  polygon([[vx,horizon],project(-.475,0),project(.475,0)],'#343639');
+  ctx.save();ctx.beginPath();ctx.moveTo(vx,horizon);ctx.lineTo(...project(-.475,0));ctx.lineTo(...project(.475,0));ctx.closePath();ctx.clip();
+  ctx.globalAlpha=.26;ctx.translate(-elapsed*54,-elapsed*16);ctx.fillStyle=pattern;ctx.fillRect(elapsed*54,elapsed*16,w,h);ctx.restore();
+  // La carreggiata si allontana dalla camera, che segue l'auto in avanti.
+  for(const side of [-.46,.46])polygon([project(side-.002,0),project(side+.002,0),project(side+.002,140),project(side-.002,140)],'#c6c8bf');
+  const travel=elapsed*20;
+  for(let i=0;i<36;i++){
+   const z=(i*5+travel)%180;
+   polygon([project(-.004,z),project(.004,z),project(.004,z+2.4),project(-.004,z+2.4)],'#d9d7c9');
+  }
+  // Dettagli dei bordi condividono la velocità e il punto di fuga dell'asfalto.
+  for(let i=0;i<22;i++){
+   const z=(i*8+travel)%176,t=1/(1+z*.095);
+   for(const side of [-.53,.53]){const [x,y]=project(side,z);ctx.fillStyle='#c6c8c5';ctx.fillRect(x,y-45*t,Math.max(1,4*t),45*t);ctx.fillStyle='#a22d30';ctx.fillRect(x,y-38*t,Math.max(1,4*t),7*t);}
+  }
+  const haze=ctx.createLinearGradient(0,horizon-20,0,horizon+h*.15);haze.addColorStop(0,'#b0b3ad44');haze.addColorStop(1,'#b0b3ad00');ctx.fillStyle=haze;ctx.fillRect(0,horizon-20,w,h*.2);
+  const shade=ctx.createRadialGradient(w*.5,h*.5,w*.1,w*.5,h*.5,w*.8);shade.addColorStop(0,'#0000');shade.addColorStop(1,'#0009');ctx.fillStyle=shade;ctx.fillRect(0,0,w,h);
+  frame=requestAnimationFrame(draw);
+ }
+ frame=requestAnimationFrame(draw);
+ return ()=>{stopped=true;cancelAnimationFrame(frame);};
+}

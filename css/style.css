@@ -14,51 +14,44 @@ html.intro-active{overflow:hidden}
 .intro-ambient{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,#39414d55,transparent 65%),linear-gradient(#070b13 35%,#252831 60%,#08090c 61%)}
 .intro-logo{position:absolute;top:35px;left:40px;width:180px;height:auto;z-index:3}
 .intro-skip{position:absolute;right:40px;top:43px;padding:9px 16px;border:1px solid #ffffff55;border-radius:3px;background:#090a0bcc;color:#fff;font-size:12px;z-index:3}.intro-skip span{margin-left:15px}
-.intro-stage{position:absolute;inset:0;perspective:900px;perspective-origin:50% 55%;overflow:hidden}
-.intro-floor{position:absolute;left:-120%;width:340%;height:200%;top:61%;transform-origin:center top;transform:rotateX(68deg);background:repeating-linear-gradient(0deg,#191b20 0 2px,#1e2025 2px 4px,#17191d 4px 7px);overflow:hidden}
-.road-dashes{position:absolute;left:50%;top:-200%;width:7px;height:400%;background:repeating-linear-gradient(0deg,#dedbc7 0 110px,transparent 110px 240px);opacity:.65}
-.road-edge{position:absolute;top:0;bottom:0;width:5px;background:#a4a6a8;opacity:.5}.edge-left{left:40%}.edge-right{right:40%}
-.intro-horizon{position:absolute;top:61%;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a6b5c744,transparent);box-shadow:0 0 40px #7d8fa233}
-.intro-car{position:absolute;width:min(1120px,135vw);left:50%;top:40%;opacity:0;will-change:transform,opacity;transform-origin:50% 80%;filter:drop-shadow(-25px 25px 12px #0009)}
+.intro-stage{position:absolute;inset:0;perspective:none;overflow:hidden}
+.intro-road-scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+.intro-car{position:absolute;width:min(1120px,135vw);left:50%;top:40%;opacity:0;will-change:transform,opacity;transform-origin:50% 90%;filter:drop-shadow(-10px 13px 5px #000b)}
 .intro-car-body{position:relative;width:100%;transform-origin:45% 85%;will-change:transform}
 .intro-car img{width:100%;height:auto;clip-path:polygon(12% 66%,12.5% 57%,13% 54%,16% 50%,19% 43%,26% 38%,36% 35%,47% 35%,58% 37%,64% 43%,68% 49%,68% 51%,77% 53%,83% 55%,86% 58%,88% 63%,90% 71%,90% 84%,87% 87%,77% 90%,60% 94%,48% 95%,40% 94%,36% 86%,22% 81%,17% 84%,14% 79%,12% 74%)}
-.rolling-wheel{position:absolute;overflow:visible;filter:blur(.35px);pointer-events:none}.wheel-front{left:39.4%;top:65%;width:9.1%;height:28.5%;transform:rotate(-8deg)}.wheel-rear{left:13.2%;top:61.3%;width:5.4%;height:21.5%;transform:rotate(2deg)}
+.rolling-wheel{position:absolute;overflow:visible;filter:blur(.7px);pointer-events:none}.wheel-front{left:39.4%;top:65%;width:9.1%;height:28.5%;transform:rotate(-8deg)}.wheel-rear{left:13.2%;top:61.3%;width:5.4%;height:21.5%;transform:rotate(2deg)}
 .wheel-spokes{transform-origin:50px 50px}
 .intro-streak{position:absolute;top:63%;height:2px;width:50vw;background:linear-gradient(90deg,transparent,#b7c9dc66,transparent);opacity:0;transform:translateX(-100vw)}.streak-two{top:70%;width:70vw}
 .intro-copy{position:absolute;bottom:9%;left:0;right:0;text-align:center;pointer-events:none}.intro-copy>span{display:block;font-size:9px;letter-spacing:.35em;color:#a5aab2;margin-bottom:13px}.intro-copy>strong{font:500 clamp(24px,3vw,40px)/1.2 var(--font);letter-spacing:-.04em}
 .intro-progress{position:absolute;left:0;right:0;bottom:0;height:2px;background:#ffffff12}.intro-progress>span{display:block;width:100%;height:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
 .drive-intro.running .intro-car{animation:panamera-drive 4.4s linear both}
 .drive-intro.running .intro-car-body{animation:road-suspension .32s ease-in-out infinite alternate}
-.drive-intro.running .wheel-spokes{animation:wheel-roll .18s linear infinite}
-.drive-intro.running .intro-floor{animation:asphalt-run .22s linear infinite}
-.drive-intro.running .road-dashes{animation:lane-run .32s linear infinite}
+.drive-intro.running .wheel-spokes{animation:wheel-roll .28s linear infinite}
 .drive-intro.running .intro-copy{animation:intro-title 4.4s linear both}
-.drive-intro.running .intro-streak{animation:intro-speed .6s linear infinite}
-.drive-intro.running .streak-two{animation-delay:.28s}
 .drive-intro.running .intro-progress>span{animation:intro-loading 4.4s linear forwards}
-/* Positions sampled from a continuous trajectory: no easing or pauses between frames. */
+/* Ripresa in inseguimento, poi sorpasso: nessuna rotazione della foto nello spazio. */
 @keyframes panamera-drive{
- 0%{opacity:0.000;transform:translate(-50%,-50%) translate3d(-38.00vw,2.00vh,-1600.0px) rotateY(-4.00deg)}
- 5%{opacity:0.625;transform:translate(-50%,-50%) translate3d(-34.10vw,1.85vh,-1486.0px) rotateY(-3.60deg)}
- 10%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-30.20vw,1.70vh,-1372.0px) rotateY(-3.20deg)}
- 15%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-26.30vw,1.55vh,-1258.0px) rotateY(-2.80deg)}
- 20%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-22.40vw,1.40vh,-1144.0px) rotateY(-2.40deg)}
- 25%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-18.50vw,1.25vh,-1030.0px) rotateY(-2.00deg)}
- 30%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-14.60vw,1.10vh,-916.0px) rotateY(-1.60deg)}
- 35%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-10.70vw,0.95vh,-802.0px) rotateY(-1.20deg)}
- 40%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-6.80vw,0.80vh,-688.0px) rotateY(-0.80deg)}
- 45%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-2.90vw,0.65vh,-574.0px) rotateY(-0.40deg)}
- 50%{opacity:1.000;transform:translate(-50%,-50%) translate3d(1.00vw,0.50vh,-460.0px) rotateY(0.00deg)}
- 55%{opacity:1.000;transform:translate(-50%,-50%) translate3d(4.90vw,0.35vh,-346.0px) rotateY(0.40deg)}
- 60%{opacity:1.000;transform:translate(-50%,-50%) translate3d(8.80vw,0.20vh,-232.0px) rotateY(0.80deg)}
- 65%{opacity:1.000;transform:translate(-50%,-50%) translate3d(12.70vw,0.05vh,-118.0px) rotateY(1.20deg)}
- 70%{opacity:1.000;transform:translate(-50%,-50%) translate3d(16.60vw,-0.10vh,-4.0px) rotateY(1.60deg)}
- 75%{opacity:1.000;transform:translate(-50%,-50%) translate3d(20.50vw,-0.25vh,110.0px) rotateY(2.00deg)}
- 80%{opacity:1.000;transform:translate(-50%,-50%) translate3d(24.40vw,-0.40vh,224.0px) rotateY(2.40deg)}
- 85%{opacity:1.000;transform:translate(-50%,-50%) translate3d(28.30vw,-0.55vh,338.0px) rotateY(2.80deg)}
- 90%{opacity:1.000;transform:translate(-50%,-50%) translate3d(32.20vw,-0.70vh,452.0px) rotateY(3.20deg)}
- 95%{opacity:1.000;transform:translate(-50%,-50%) translate3d(36.10vw,-0.85vh,566.0px) rotateY(3.60deg)}
- 100%{opacity:0.000;transform:translate(-50%,-50%) translate3d(40.00vw,-1.00vh,680.0px) rotateY(4.00deg)}
+ 0%{opacity:0.000;transform:translate(-50%,-50%) translate3d(-16.00vw,0,0) scale(0.820)}
+ 5%{opacity:0.625;transform:translate(-50%,-50%) translate3d(-15.55vw,0,0) scale(0.829)}
+ 10%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-15.10vw,0,0) scale(0.838)}
+ 15%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-14.65vw,0,0) scale(0.847)}
+ 20%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-14.20vw,0,0) scale(0.856)}
+ 25%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-13.74vw,0,0) scale(0.865)}
+ 30%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-13.27vw,0,0) scale(0.874)}
+ 35%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-12.77vw,0,0) scale(0.884)}
+ 40%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-12.19vw,0,0) scale(0.893)}
+ 45%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-11.46vw,0,0) scale(0.904)}
+ 50%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-10.48vw,0,0) scale(0.917)}
+ 55%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-9.07vw,0,0) scale(0.933)}
+ 60%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-6.96vw,0,0) scale(0.953)}
+ 65%{opacity:1.000;transform:translate(-50%,-50%) translate3d(-3.78vw,0,0) scale(0.981)}
+ 70%{opacity:1.000;transform:translate(-50%,-50%) translate3d(1.01vw,0,0) scale(1.020)}
+ 75%{opacity:1.000;transform:translate(-50%,-50%) translate3d(8.10vw,0,0) scale(1.075)}
+ 80%{opacity:1.000;transform:translate(-50%,-50%) translate3d(18.46vw,0,0) scale(1.153)}
+ 85%{opacity:1.000;transform:translate(-50%,-50%) translate3d(33.33vw,0,0) scale(1.262)}
+ 90%{opacity:1.000;transform:translate(-50%,-50%) translate3d(54.28vw,0,0) scale(1.412)}
+ 95%{opacity:1.000;transform:translate(-50%,-50%) translate3d(83.33vw,0,0) scale(1.620)}
+ 100%{opacity:0.000;transform:translate(-50%,-50%) translate3d(123.00vw,0,0) scale(1.900)}
 }
 @keyframes road-suspension{from{transform:translateY(-.5px) rotate(-.04deg)}to{transform:translateY(.8px) rotate(.04deg)}}
 @keyframes wheel-roll{to{transform:rotate(360deg)}}
@@ -67,5 +60,9 @@ html.intro-active{overflow:hidden}
 @keyframes intro-title{0%,8%{opacity:0;transform:translateY(8px)}20%,65%{opacity:1;transform:translateY(0)}85%,100%{opacity:0;transform:translateY(-8px)}}
 @keyframes intro-speed{0%{opacity:0;transform:translateX(100vw)}20%,70%{opacity:.5}100%{opacity:0;transform:translateX(-100vw)}}
 @keyframes intro-loading{to{transform:scaleX(1)}}
-@media(max-width:700px){.intro-logo{width:140px;left:20px;top:25px}.intro-skip{right:20px;top:30px;font-size:10px;padding:7px 11px}.intro-car{width:145vw;top:43%}.intro-copy{bottom:15%}.intro-copy>span{font-size:7px;letter-spacing:.25em}.intro-stage{perspective:750px}}
+@media(max-width:700px){.intro-logo{width:140px;left:20px;top:25px}.intro-skip{right:20px;top:30px;font-size:10px;padding:7px 11px}.intro-car{width:145vw;top:43%}.intro-copy{bottom:15%}.intro-copy>span{font-size:7px;letter-spacing:.25em}.intro-stage{perspective:none}}
 @media(prefers-reduced-motion:reduce){.drive-intro{display:none!important}html.intro-active{overflow:auto}}
+
+.intro-car-body:before{content:"";position:absolute;left:16%;right:12%;top:79%;height:16%;border-radius:50%;background:#0009;filter:blur(9px)}
+
+.rolling-wheel{opacity:.85;filter:blur(1.1px)}
