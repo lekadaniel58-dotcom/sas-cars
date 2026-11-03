@@ -70,11 +70,11 @@ $('#requestForm').addEventListener('submit',event=>{
  motion.addEventListener('change',finish);
  window.addEventListener('pagehide',finish,{once:true});
  // Un’immagine non caricata non deve mai impedire di accedere al sito.
- loadTimer=setTimeout(finish,6000);
+ loadTimer=setTimeout(finish,7500);
  const ready=image.decode?image.decode():Promise.resolve();
  ready.then(()=>{
   if(ended)return;
   intro.classList.add('running');
-  driveTimer=setTimeout(leave,3500);
+  driveTimer=setTimeout(leave,4250);
  }).catch(finish);
 })();
